@@ -33,6 +33,7 @@ public class GameController {
         return "index";
     }
 
+    //开始和重新开始游戏
     @RequestMapping("/start")
     public String start(){
 
