@@ -1,0 +1,165 @@
+/*游戏机主体区域*/
+.gamebox-body{
+    background-color: #25322B;
+    height: 450px;
+    margin-top: 30px;
+    border-top: 10px solid #6C6C6C;
+    box-shadow: -2px 6px 5px #335060;
+}
+
+/*游戏机左侧蓝色区域*/
+.gamebox-left{
+    background-color: #02C9DE;
+    height: 450px;
+    margin-top: 30px;
+    border-top-left-radius: 65px;
+    border-bottom-left-radius: 65px;
+    border-top: 10px solid #49E7F2;
+    border-left: 1px solid #36B4CB;
+    border-bottom: 3px solid #1A6F8B;
+    box-shadow: -1px 6px 5px #335060;
+}
+
+.gamebox-left-elementOne{
+    background-color: #36373B;
+    height: 8px;
+    margin-top: 30px;
+}
+
+.gamebox-left-elementTwo{
+    margin-top: 35px;
+    text-align: center;
+}
+
+.gamebox-left-elementThree{
+    background-color: #36373B;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-top: 35px;
+    margin-left: 56px;
+    padding-top: 4px;
+    text-align: center;
+}
+
+.gamebox-left-elementFour{
+    background-color: #36373B;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-left: 19px;
+    padding-top: 4px;
+    text-align: center;
+}
+
+.gamebox-left-elementFive{
+    background-color: #36373B;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-left: 38px;
+    padding-top: 4px;
+    text-align: center;
+}
+
+.gamebox-left-elementSix{
+    background-color: #36373B;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-left: 56px;
+    padding-top: 4px;
+    text-align: center;
+}
+
+/*游戏机右侧红色区域*/
+.gamebox-right{
+    background-color: #F9443B;
+    height: 450px;
+    margin-top: 30px;
+    border-top-right-radius: 65px;
+    border-bottom-right-radius: 65px;
+    border-top: 10px solid #FF9386;
+    border-right: 1px solid #B94142;
+    border-bottom: 3px solid #A5191A;
+    box-shadow: -3px 6px 5px #335060;
+}
+
+.gamebox-right-elementOne{
+    text-align: center;
+    margin-top: 17px;
+}
+
+.gamebox-right-elementTwo{
+    background-color: #36373B;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-top: 35px;
+    margin-left: 56px;
+    padding-top: 6px;
+    padding-right: 2px;
+    text-align: center;
+}
+
+.gamebox-right-elementThree{
+    background-color: #36373B;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-left: 19px;
+    padding-top: 7px;
+    padding-right: 3px;
+    text-align: center;
+}
+
+.gamebox-right-elementFour{
+    background-color: #36373B;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-left: 38px;
+    padding-top: 6px;
+    padding-right: 2px;
+    text-align: center;
+}
+
+.gamebox-right-elementFive{
+    background-color: #36373B;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-left: 56px;
+    padding-top: 6px;
+    padding-right: 2px;
+    text-align: center;
+}
+
+.gamebox-right-elementSix{
+    margin-top: 35px;
+    text-align: center;
+}
+
+/*游戏机中间屏幕*/
+.gamebox-screen{
+    background-color: #000000;
+    height: 95%;
+    width: 95%;
+    margin: 10px auto;
+    padding: 1px;
+}
+
+/*游戏机中间画面*/
+.gamebox-picture{
+    background-color: #1e1f20;
+    height: 95%;
+    width: 90%;
+    margin: 9px auto;
+    padding: 1px;
+}
+
+/*底部启动按钮*/
+#boot-block{
+    text-align: center;
+    margin: 25px auto;
+}

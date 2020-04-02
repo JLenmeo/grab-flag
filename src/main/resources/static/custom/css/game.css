@@ -1,0 +1,206 @@
+/*左边地图显示区域*/
+.map-display-block{
+    border: 3px solid #FFFFFF;
+    width: 60%;
+    height: 98%;
+    margin-top: 4px;
+    margin-left: 20px;
+    padding: 4px;
+}
+
+/*棋盘一行*/
+.checkerboard-row{
+    height: 25px;
+}
+
+/*普通单位*/
+.normal-unit{
+    border: 1px solid #FFFFFF;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+
+/*旗子单位*/
+.flag-unit{
+    border: 1px solid #DD001B;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+
+/*墙壁单位*/
+.wall-unit{
+    border: 1px solid #599C41;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+
+/*旗子单位图标*/
+.unit-flag-icon{
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: bolder;
+}
+
+/*普通单位图标*/
+.unit-icon{
+    color: #FFFFFF;
+    font-size: 1px;
+    font-weight: bolder;
+}
+
+/*单位血条*/
+.unit-blood-bar{
+    height: 6px;
+}
+
+/*血量数字*/
+.my-progress-text{
+    position: absolute;
+    top: 13px;
+    left: 5px;
+    font-size: 1px;
+    color: #52f844;
+}
+
+/*右边信息显示区域*/
+.info-block{
+    border: 3px solid #FFFFFF;
+    width: 30%;
+    height: 90%;
+    margin-top: 19px;
+    margin-left: 25px;
+    padding: 1px;
+}
+
+/*游戏信息显示区域*/
+.game-info-block{
+    border: 3px solid #FFFFFF;
+    width: 90%;
+    height: 37%;
+    margin-top: 10px;
+    margin-left: 6px;
+    padding: 1px;
+}
+
+/*回合数显示区域*/
+.round-block{
+    height: 20%;
+    margin-top: 5px;
+    text-align: center;
+}
+
+/*兽人数量显示区域*/
+.orcNum-block{
+    height: 70%;
+    margin-top: 5px;
+    padding: 1px;
+}
+
+/*兽人数量-图片块*/
+.orcNum-pic-block{
+    width: 30%;
+    height: 56%;
+    margin-top: 23px;
+    margin-left: 5px;
+}
+
+/*兽人数量-符号块*/
+.orcNum-icon-block{
+    width: 30%;
+    height: 49%;
+    margin-top: 23px;
+    margin-left: 5px;
+    text-align: center;
+    padding-top: 3px;
+}
+
+/*兽人数量-数量块*/
+.orcNum-num-block{
+    width: 30%;
+    height: 49%;
+    margin-top: 23px;
+    margin-left: -2px;
+    text-align: center;
+    padding-top: 8px;
+}
+
+/*回合结算信息区域*/
+.settle-block{
+    border: 3px solid #FFFFFF;
+    width: 90%;
+    height: 50%;
+    margin-top: 10px;
+    margin-left: 6px;
+    padding: 1px;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: auto;
+}
+
+.settle-block::-webkit-scrollbar{
+    background-color: #EBEBEB;
+    width: 10px;
+}
+
+.settle-block::-webkit-scrollbar-thumb{
+    background-color: #505050;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.settle-block::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background: #ededed;
+}
+
+.settle-info{
+    font-size: 13px;
+    color: #FFFFFF;
+    font-family: KaiTi;
+}
+
+/*下一轮按钮*/
+.gamebox-right-elementSix > i:hover{
+    cursor: pointer;
+    border: 1px solid #FFFFFF;
+    border-radius: 50%;
+}
+
+.gamebox-right-elementSix > i:active{
+    border: 2px solid #FFFFFF;
+}
+
+/*重新开始按钮*/
+.gamebox-left-elementTwo > i:hover{
+    cursor: pointer;
+    border: 1px solid #FFFFFF;
+    border-radius: 50%;
+}
+
+.gamebox-left-elementTwo > i:active{
+    border: 2px solid #FFFFFF;
+}
+
+/*上翻历史记录按钮*/
+.gamebox-left-elementThree:hover{
+    cursor: pointer;
+    border: 1px solid #FFFFFF;
+}
+
+.gamebox-left-elementThree:active{
+    border: 2px solid #FFFFFF;
+}
+
+/*下翻历史记录按钮*/
+.gamebox-left-elementSix:hover{
+    cursor: pointer;
+    border: 1px solid #FFFFFF;
+}
+
+.gamebox-left-elementSix:active{
+    border: 2px solid #FFFFFF;
+}

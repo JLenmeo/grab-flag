@@ -1,0 +1,52 @@
+@keyframes gamebox-welcome-pic-open-animation{
+    0% {opacity: 0}
+    80% {opacity: 1}
+    100% {opacity: 0}
+}
+
+@keyframes orcgame-play-pic-open-animation{
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+@keyframes orcgame-play-pic-close-animation{
+    from {opacity: 1}
+    to {opacity: 0}
+}
+
+#gamebox-welcome-pic{
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+#orcgame-play-pic{
+    height: 100%;
+    padding: 1px;
+    display: none;
+}
+
+.orcgame-title{
+    font-family: STCaiyun;
+    font-size: 50px;
+    color: #FFFFFF;
+    text-align: center;
+    margin-top: 130px;
+}
+
+.orcgame-play{
+    font-family: STCaiyun;
+    font-size: 25px;
+    color: #FFFFFF;
+    text-align: center;
+    margin-top: 35px;
+}
+
+.orcgame-play-word:hover{
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.orcgame-play-word:active{
+    font-size: 25px;
+}
