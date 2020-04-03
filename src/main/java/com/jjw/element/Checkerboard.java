@@ -326,6 +326,10 @@ public class Checkerboard {
 
             //找出当前兽人3x3内最小的目标
             Orc minTarget = ComparedUtils.minOrc(targets);
+            if(ComparedUtils.biggerOrc(minTarget,orcA)){
+                //比最小的目标还小，直接不用判定
+                continue;
+            }
 
             //找出最小目标5x5内的兽人
             List<Orc> enemies = relation5x5.get(minTarget);
@@ -438,41 +442,51 @@ public class Checkerboard {
                 continue;
             }
 
-            boolean haveEnemy = true;
-            List<Direction> dirs = new ArrayList<>();
-            List<Orc> targets = relation11x11.get(orcA);
+            Direction positiveDir = null;
+            Direction negativeDir = null;
 
-            if(targets.size() == 0){
-                //11x11没有兽人，随机移动
-                dirs.add(orcA.randomDirection());
-                haveEnemy = false;
-            }else if(targets.size() == 1){
-                //11x11内有一个兽人
-                Orc enemy = targets.get(0);
-                if(ComparedUtils.biggerOrc(orcA,enemy)){
-                    dirs.add(orcA.positiveDir(enemy));
-                }else{
-                    dirs.add(orcA.negativeDir(enemy));
-                }
+            caculateNormalDir(positiveDir,negativeDir,orcA,relation3x3.get(orcA));
+            caculateNormalDir(positiveDir,negativeDir,orcA,relation5x5.get(orcA));
+            caculateNormalDir(positiveDir,negativeDir,orcA,relation7x7.get(orcA));
+            caculateNormalDir(positiveDir,negativeDir,orcA,relation9x9.get(orcA));
+            caculateNormalDir(positiveDir,negativeDir,orcA,relation11x11.get(orcA));
+
+            orcA.normalMoveAction(positiveDir,negativeDir);
+        }
+
+    }
+
+    //计算普通移动的方向
+    private void caculateNormalDir(Direction positiveDir,Direction negativeDir,Orc orcA,List<Orc> targets){
+
+        if(targets.size() == 0 || (positiveDir != null && negativeDir != null)){
+            return;
+        }
+
+        if(targets.size() == 1){
+            Orc target = targets.get(0);
+            if(ComparedUtils.biggerOrc(orcA,target)){
+                //当前范围内有一个比自己小的兽人
+                positiveDir = (positiveDir == null ? orcA.positiveDir(target) : positiveDir);
             }else{
-                //11x11内有多名兽人
-                Orc maxOrc = ComparedUtils.maxOrc(targets);
-                Orc minOrc = targets.get(0);
-
-                if(orcA.getValue() >= maxOrc.getValue()){
-                    //当前兽人是11x11内最大的兽人
-                    dirs.add(orcA.positiveDir(minOrc));
-                }else if(orcA.getValue() <= minOrc.getValue()){
-                    //当前兽人是11x11内最小的兽人
-                    dirs.add(orcA.negativeDir(maxOrc));
-                }else{
-                    //当前兽人属于中等
-                    dirs.add(orcA.positiveDir(minOrc));
-                    dirs.add(orcA.negativeDir(maxOrc));
-                }
+                //当前范围内有一个比自己大的兽人
+                negativeDir = (negativeDir == null ? orcA.negativeDir(target) : negativeDir);
             }
+        }else{
+            Orc maxOrc = ComparedUtils.maxOrc(targets);
+            Orc minOrc = targets.get(0);
 
-            orcA.normalMoveAction(dirs,haveEnemy);
+            if(ComparedUtils.biggerOrc(orcA,maxOrc)){
+                //当前范围内自己是最大的兽人
+                positiveDir = (positiveDir == null ? orcA.positiveDir(minOrc) : positiveDir);
+            }else if(ComparedUtils.biggerOrc(minOrc,orcA)){
+                //当前范围内自己是最小的兽人
+                negativeDir = (negativeDir == null ? orcA.negativeDir(maxOrc) : negativeDir);
+            }else{
+                //当前范围内自己是中等的兽人
+                positiveDir = (positiveDir == null ? orcA.positiveDir(minOrc) : positiveDir);
+                negativeDir = (negativeDir == null ? orcA.negativeDir(maxOrc) : negativeDir);
+            }
         }
 
     }

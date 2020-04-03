@@ -258,12 +258,30 @@ public class Orc implements Comparable<Orc> {
     }
 
     //普通移动动作
-    public void normalMoveAction(List<Direction> dirs,boolean haveEnemy){
+    public void normalMoveAction(Direction positiveDir,Direction negativeDir){
 
-        if(!haveEnemy){
+        if(positiveDir == null && negativeDir == null){
+            moveDir = randomDirection();
             moveOff = 2;
+        }else{
+            if(positiveDir == null){
+                positiveDir = Direction.NONE;
+            }
+
+            if(negativeDir == null){
+                negativeDir = Direction.NONE;
+            }
+
+            if(positiveDir.oppositeDir(negativeDir)){
+                positiveDir = Direction.NONE;
+            }
+
+            List<Direction> dirs = new ArrayList<>();
+            dirs.add(positiveDir);
+            dirs.add(negativeDir);
+
+            moveDir = Direction.mergeDir(dirs);
         }
-        moveDir = Direction.mergeDir(dirs);
         judge = true;
 
         actionMsg = num + "向" + moveDir.toString() + "方向移动" + moveOff + "格";

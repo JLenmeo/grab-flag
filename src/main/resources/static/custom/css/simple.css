@@ -1,0 +1,122 @@
+body{
+    background-color: #000000;
+    height: 550px;
+}
+
+/*左边地图显示区域*/
+.map-display-block{
+    border: 3px solid #FFFFFF;
+    width: 535px;
+    height: 535px;
+    margin-top: 4px;
+    margin-left: 20px;
+    padding: 2px;
+}
+
+/*棋盘一行*/
+.checkerboard-row{
+    height: 25px;
+}
+
+/*普通单位*/
+.normal-unit{
+    border: 1px solid #FFFFFF;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+
+/*旗子单位*/
+.flag-unit{
+    border: 1px solid #DD001B;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+
+/*墙壁单位*/
+.wall-unit{
+    border: 1px solid #599C41;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+
+/*旗子单位图标*/
+.unit-flag-icon{
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: bolder;
+}
+
+/*普通单位图标*/
+.unit-icon{
+    color: #FFFFFF;
+    font-size: 1px;
+    font-weight: bolder;
+}
+
+/*单位血条*/
+.unit-blood-bar{
+    height: 6px;
+}
+
+/*血量数字*/
+.my-progress-text{
+    position: absolute;
+    top: 13px;
+    left: 5px;
+    font-size: 1px;
+    color: #52f844;
+}
+
+/*中间信息显示区域*/
+.info-block{
+    border: 3px solid #FFFFFF;
+    width: 200px;
+    height: 535px;
+    margin-top: 4px;
+    margin-left: 20px;
+    padding: 1px;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: auto;
+}
+
+.settle-info{
+    font-size: 13px;
+    color: #FFFFFF;
+    font-family: KaiTi;
+}
+
+.info-block::-webkit-scrollbar{
+    background-color: #EBEBEB;
+    width: 10px;
+}
+
+.info-block::-webkit-scrollbar-thumb{
+    background-color: #505050;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.info-block::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background: #ededed;
+}
+
+/*右边按钮区域*/
+.button-block{
+    border: 3px solid #FFFFFF;
+    width: 200px;
+    height: 535px;
+    margin-top: 4px;
+    margin-left: 20px;
+    padding: 1px;
+    text-align: center;
+}
+
+.button-unit{
+    margin-top: 25px;
+}
