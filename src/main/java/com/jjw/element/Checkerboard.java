@@ -326,7 +326,7 @@ public class Checkerboard {
 
             //找出当前兽人3x3内最小的目标
             Orc minTarget = ComparedUtils.minOrc(targets);
-            if(ComparedUtils.biggerOrc(minTarget,orcA)){
+            if(!ComparedUtils.biggerOrc(orcA,minTarget)){
                 //比最小的目标还小，直接不用判定
                 continue;
             }
@@ -370,12 +370,12 @@ public class Checkerboard {
 
             //排序，以R值最小且能杀的为移动目标
             Orc minTarget = ComparedUtils.minOrc(targets);
-            if(ComparedUtils.biggerOrc(minTarget,orcA)){
+            if(!ComparedUtils.biggerOrc(orcA,minTarget)){
                 //比最小的目标还小，直接不用判定
                 continue;
             }
             for(Orc target : targets){
-                if(ComparedUtils.biggerOrc(target,orcA)){
+                if(!ComparedUtils.biggerOrc(orcA,target)){
                     //当目标的值开始大于当前兽人时，那也可以不用对之后的目标判定了
                     break;
                 }
@@ -484,7 +484,7 @@ public class Checkerboard {
                 if(dirs.get("positiveDir") == null){
                     dirs.put("positiveDir",orcA.positiveDir(minOrc));
                 }
-            }else if(ComparedUtils.biggerOrc(minOrc,orcA)){
+            }else if(!ComparedUtils.biggerOrc(orcA,minOrc)){
                 //当前范围内自己是最小的兽人
                 if(dirs.get("negativeDir") == null){
                     dirs.put("negativeDir",orcA.negativeDir(maxOrc));
