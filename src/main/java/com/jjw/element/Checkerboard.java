@@ -442,24 +442,23 @@ public class Checkerboard {
                 continue;
             }
 
-            Direction positiveDir = null;
-            Direction negativeDir = null;
+            Map<String,Direction> dirs = new HashMap<>();
 
-            caculateNormalDir(positiveDir,negativeDir,orcA,relation3x3.get(orcA));
-            caculateNormalDir(positiveDir,negativeDir,orcA,relation5x5.get(orcA));
-            caculateNormalDir(positiveDir,negativeDir,orcA,relation7x7.get(orcA));
-            caculateNormalDir(positiveDir,negativeDir,orcA,relation9x9.get(orcA));
-            caculateNormalDir(positiveDir,negativeDir,orcA,relation11x11.get(orcA));
+            caculateNormalDir(dirs,orcA,relation3x3.get(orcA));
+            caculateNormalDir(dirs,orcA,relation5x5.get(orcA));
+            caculateNormalDir(dirs,orcA,relation7x7.get(orcA));
+            caculateNormalDir(dirs,orcA,relation9x9.get(orcA));
+            caculateNormalDir(dirs,orcA,relation11x11.get(orcA));
 
-            orcA.normalMoveAction(positiveDir,negativeDir);
+            orcA.normalMoveAction(dirs.get("positiveDir"),dirs.get("negativeDir"));
         }
 
     }
 
     //计算普通移动的方向
-    private void caculateNormalDir(Direction positiveDir,Direction negativeDir,Orc orcA,List<Orc> targets){
+    private void caculateNormalDir(Map<String,Direction> dirs,Orc orcA,List<Orc> targets){
 
-        if(targets.size() == 0 || (positiveDir != null && negativeDir != null)){
+        if(targets.size() == 0 || (dirs.get("positiveDir") != null && dirs.get("negativeDir") != null)){
             return;
         }
 
@@ -467,10 +466,14 @@ public class Checkerboard {
             Orc target = targets.get(0);
             if(ComparedUtils.biggerOrc(orcA,target)){
                 //当前范围内有一个比自己小的兽人
-                positiveDir = (positiveDir == null ? orcA.positiveDir(target) : positiveDir);
+                if(dirs.get("positiveDir") == null){
+                    dirs.put("positiveDir",orcA.positiveDir(target));
+                }
             }else{
                 //当前范围内有一个比自己大的兽人
-                negativeDir = (negativeDir == null ? orcA.negativeDir(target) : negativeDir);
+                if(dirs.get("negativeDir") == null){
+                    dirs.put("negativeDir",orcA.negativeDir(target));
+                }
             }
         }else{
             Orc maxOrc = ComparedUtils.maxOrc(targets);
@@ -478,14 +481,22 @@ public class Checkerboard {
 
             if(ComparedUtils.biggerOrc(orcA,maxOrc)){
                 //当前范围内自己是最大的兽人
-                positiveDir = (positiveDir == null ? orcA.positiveDir(minOrc) : positiveDir);
+                if(dirs.get("positiveDir") == null){
+                    dirs.put("positiveDir",orcA.positiveDir(minOrc));
+                }
             }else if(ComparedUtils.biggerOrc(minOrc,orcA)){
                 //当前范围内自己是最小的兽人
-                negativeDir = (negativeDir == null ? orcA.negativeDir(maxOrc) : negativeDir);
+                if(dirs.get("negativeDir") == null){
+                    dirs.put("negativeDir",orcA.negativeDir(maxOrc));
+                }
             }else{
                 //当前范围内自己是中等的兽人
-                positiveDir = (positiveDir == null ? orcA.positiveDir(minOrc) : positiveDir);
-                negativeDir = (negativeDir == null ? orcA.negativeDir(maxOrc) : negativeDir);
+                if(dirs.get("positiveDir") == null){
+                    dirs.put("positiveDir",orcA.positiveDir(minOrc));
+                }
+                if(dirs.get("negativeDir") == null){
+                    dirs.put("negativeDir",orcA.negativeDir(maxOrc));
+                }
             }
         }
 
