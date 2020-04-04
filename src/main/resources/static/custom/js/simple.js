@@ -130,41 +130,21 @@ layui.use(["element","layer"], function(){
 
                         if(unit.isBorder){
                             if(unit.noOne){
-                                targetRows.append("<div class='wall-unit layui-col-lg1'></div>")
+                                targetRows.append("<div class='wall-unit'></div>")
                             }else{
-                                targetRows.append("<div class='wall-unit layui-col-lg1'>" +
-                                    "<span class='unit-icon'>" + unit.num + "</span>" +
-                                    "<div class='layui-progress unit-blood-bar' lay-filter='" + unit.num + "'>" +
-                                    "<div class='layui-progress-bar unit-blood-bar' lay-percent='" + unit.value + "'></div>" +
-                                    "</div>" +
-                                    "<span class='my-progress-text'>" + unit.value + "</span>" +
-                                    "</div>");
+                                targetRows.append("<div class='wall-unit unit-flag-icon'>" + unit.num + "<br/>" + unit.value + "</div>");
                             }
                         }else{
                             if(unit.noOne){
-                                targetRows.append("<div class='normal-unit layui-col-lg1'></div>")
+                                targetRows.append("<div class='normal-unit'></div>")
                             }else{
                                 if(unit.haveFlag){
-                                    targetRows.append("<div class='flag-unit layui-col-lg1'>" +
-                                        "<span class='unit-icon'>" + unit.num + "</span>" +
-                                        "<div class='layui-progress unit-blood-bar' lay-filter='" + unit.num + "'>" +
-                                        "<div class='layui-progress-bar unit-blood-bar' lay-percent='" + unit.value + "'></div>" +
-                                        "</div>" +
-                                        "<span class='my-progress-text'>" + unit.value + "</span>" +
-                                        "</div>");
+                                    targetRows.append("<div class='flag-unit unit-flag-icon'>" + unit.num + "<br/>" + unit.value + "</div>");
                                 }else{
-                                    targetRows.append("<div class='normal-unit layui-col-lg1'>" +
-                                        "<span class='unit-icon'>" + unit.num + "</span>" +
-                                        "<div class='layui-progress unit-blood-bar' lay-filter='" + unit.num + "'>" +
-                                        "<div class='layui-progress-bar unit-blood-bar' lay-percent='" + unit.value + "'></div>" +
-                                        "</div>" +
-                                        "<span class='my-progress-text'>" + unit.value + "</span>" +
-                                        "</div>");
+                                    targetRows.append("<div class='normal-unit unit-icon'>" + unit.num + "<br/>" + unit.value + "</div>");
                                 }
                             }
                         }
-
-                        element.progress(unit.num, String(unit.value) + "%");
                     }
                 }
 
@@ -184,5 +164,78 @@ layui.use(["element","layer"], function(){
                 }
             }
         });
+    }
+
+    //地图滑块前置事件
+    var timer = "none";
+    $(".map-display-block").mousemove(function (e) {
+        clearInterval(timer);
+
+        var mouseX = e.pageX;
+        var mouseY = e.pageY;
+
+        if(mouseX <= 80){
+            if(mouseY <= 60){
+                timer = setInterval(function () {
+                    mapScroll("dec","dec");
+                },100);
+            }else if(mouseY >= 470){
+                timer = setInterval(function () {
+                    mapScroll("dec","add");
+                },100);
+            }else{
+                timer = setInterval(function () {
+                    mapScroll("dec","none");
+                },100);
+            }
+        }else if(mouseX >= 495){
+            if(mouseY <= 60){
+                timer = setInterval(function () {
+                    mapScroll("add","dec");
+                },100);
+            }else if(mouseY >= 470){
+                timer = setInterval(function () {
+                    mapScroll("add","add");
+                },100);
+            }else{
+                timer = setInterval(function () {
+                    mapScroll("add","none");
+                },100);
+            }
+        }else{
+            if(mouseY <= 60){
+                timer = setInterval(function () {
+                    mapScroll("none","dec");
+                },100);
+            }else if(mouseY >= 470){
+                timer = setInterval(function () {
+                    mapScroll("none","add");
+                },100);
+            }
+        }
+    });
+
+    $(".map-display-block").mouseleave(function () {
+        clearInterval(timer);
+    });
+
+    //地图滑块事件
+    function mapScroll(xDir,yDir) {
+        var offset = 25;
+        var scrollX = $(".map-display-block").scrollLeft();
+        var scrollY = $(".map-display-block").scrollTop();
+
+        if(xDir == "add"){
+            $(".map-display-block").scrollLeft(scrollX + offset);
+        }else if(xDir == "dec"){
+            $(".map-display-block").scrollLeft(scrollX - offset);
+        }
+
+        if(yDir == "add"){
+            $(".map-display-block").scrollTop(scrollY + offset);
+        }else if(yDir == "dec"){
+            $(".map-display-block").scrollTop(scrollY - offset);
+        }
+
     }
 });

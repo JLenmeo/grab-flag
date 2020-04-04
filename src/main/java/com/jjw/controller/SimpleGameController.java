@@ -21,9 +21,9 @@ import java.util.Map;
 @RequestMapping("/simple")
 public class SimpleGameController {
 
-    public static final int SPACE_SIZE = 19;
+    public static final int SPACE_SIZE = 17;
 
-    public static final int ORC_NUM = 20;
+    public static final int ORC_NUM = 4;
 
     private int round;
 

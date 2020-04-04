@@ -7,7 +7,7 @@
 <body>
     <div class="layui-col-lg1 map-display-block"></div>
     <div class="layui-col-lg1 info-block"></div>
-    <div class="layui-col-lg1 button-block">
+    <div class="layui-col-lg1 controller-block">
         <div class="button-unit">
             <button id="nextRound" class="layui-btn layui-btn-radius layui-btn-danger">下一轮</button>
         </div>

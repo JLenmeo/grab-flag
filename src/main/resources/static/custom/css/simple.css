@@ -11,11 +11,17 @@ body{
     margin-top: 4px;
     margin-left: 20px;
     padding: 2px;
+    overflow: auto;
+}
+
+.map-display-block::-webkit-scrollbar{
+    display: none;
 }
 
 /*棋盘一行*/
 .checkerboard-row{
     height: 25px;
+    white-space: nowrap;
 }
 
 /*普通单位*/
@@ -24,6 +30,9 @@ body{
     width: 25px;
     height: 25px;
     text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    vertical-align: bottom;
 }
 
 /*旗子单位*/
@@ -32,6 +41,9 @@ body{
     width: 25px;
     height: 25px;
     text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    vertical-align: bottom;
 }
 
 /*墙壁单位*/
@@ -40,12 +52,15 @@ body{
     width: 25px;
     height: 25px;
     text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    vertical-align: bottom;
 }
 
 /*旗子单位图标*/
 .unit-flag-icon{
     color: #FFFFFF;
-    font-size: 13px;
+    font-size: 1px;
     font-weight: bolder;
 }
 
@@ -54,20 +69,6 @@ body{
     color: #FFFFFF;
     font-size: 1px;
     font-weight: bolder;
-}
-
-/*单位血条*/
-.unit-blood-bar{
-    height: 6px;
-}
-
-/*血量数字*/
-.my-progress-text{
-    position: absolute;
-    top: 13px;
-    left: 5px;
-    font-size: 1px;
-    color: #ff050b;
 }
 
 /*中间信息显示区域*/
@@ -106,8 +107,8 @@ body{
     background: #ededed;
 }
 
-/*右边按钮区域*/
-.button-block{
+/*右边控制区域*/
+.controller-block{
     border: 3px solid #FFFFFF;
     width: 200px;
     height: 535px;
