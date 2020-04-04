@@ -8,6 +8,12 @@
     <div class="layui-col-lg1 map-display-block"></div>
     <div class="layui-col-lg1 info-block"></div>
     <div class="layui-col-lg1 controller-block">
+        <div class="settle-info">修改地图大小</div>
+        <div class="change-spacesize-block">
+            <input type="text" name="spaceSize" placeholder="地图大小" class="layui-input" style="display: inline-block;width: 50%;margin-right: 5px;">
+            <button id="changeSpaceSize" class="layui-btn layui-btn-radius layui-btn-danger">修改</button>
+        </div>
+        <div style='height: 15px;border-bottom: 1px solid #FFFFFF;'></div>
         <div class="button-unit">
             <button id="nextRound" class="layui-btn layui-btn-radius layui-btn-danger">下一轮</button>
         </div>

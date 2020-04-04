@@ -1,13 +1,24 @@
-layui.use(["element","layer"], function(){
-    var element = layui.element;
+layui.use(["layer"], function(){
     var layer = layui.layer;
 
-    $(function () {
+    //修改地图大小点击事件
+    $("#changeSpaceSize").click(function () {
+        var request = {};
+        request.spaceSize = $("input[name='spaceSize']").val();
+
         $.ajax({
-            url:"http://localhost:8080/simple/start",
+            url:"http://localhost:8080/simple/changeSpaceSize",
+            type:"post",
+            contentType:"application/json",
+            data:JSON.stringify(request),
+            dataType:"json",
             success:function (response) {
-                var request = {dataKind:"CUR"};
-                showGame(request);
+                if(response.code == 'success'){
+                    $("#restart").click();
+                }else{
+                    console.log(response.msg);
+                    layer.msg(response.msg);
+                }
             }
         });
     });
@@ -236,6 +247,10 @@ layui.use(["element","layer"], function(){
         }else if(yDir == "dec"){
             $(".map-display-block").scrollTop(scrollY - offset);
         }
-
     }
+
+
+    $(function () {
+        $("#restart").click();
+    });
 });

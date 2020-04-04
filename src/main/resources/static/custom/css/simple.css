@@ -118,6 +118,10 @@ body{
     text-align: center;
 }
 
+.change-spacesize-block{
+    margin-top: 10px;
+}
+
 .button-unit{
     margin-top: 25px;
 }

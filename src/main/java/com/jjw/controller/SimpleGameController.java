@@ -21,9 +21,13 @@ import java.util.Map;
 @RequestMapping("/simple")
 public class SimpleGameController {
 
-    public static final int SPACE_SIZE = 17;
+    public static final int MAX_SPACE_SIZE = 101;
 
-    public static final int ORC_NUM = 4;
+    public static final int MIN_SPACE_SIZE = 19;
+
+    private int spaceSize = 19;
+
+    private int orcNum = 4;
 
     private int round;
 
@@ -37,6 +41,42 @@ public class SimpleGameController {
         return "simple";
     }
 
+    @RequestMapping("/changeSpaceSize")
+    @ResponseBody
+    public JSONObject changeSpaceSize(@RequestBody JSONObject request){
+
+        JSONObject response = new JSONObject();
+        try{
+            int changeSize = Integer.parseInt(request.getString("spaceSize"));
+
+            if(changeSize > MAX_SPACE_SIZE){
+                changeSize = MAX_SPACE_SIZE;
+            }else if(changeSize < MIN_SPACE_SIZE){
+                changeSize = MIN_SPACE_SIZE;
+            }
+
+            spaceSize = changeSize;
+
+            if(spaceSize == MAX_SPACE_SIZE){
+                orcNum = 100;
+            }else if(spaceSize == MIN_SPACE_SIZE){
+                orcNum = 4;
+            }else if((spaceSize * spaceSize) % 100 >= 50){
+                orcNum = ((spaceSize * spaceSize) / 100) + 1;
+            }else{
+                orcNum = (spaceSize * spaceSize) / 100;
+            }
+
+            response.put("code","success");
+            return response;
+        }catch (NumberFormatException e){
+            response.put("code","fail");
+            response.put("msg","数字格式不正确");
+            return response;
+        }
+
+    }
+
     //开始和重新开始游戏
     @RequestMapping("/start")
     @ResponseBody
@@ -45,11 +85,11 @@ public class SimpleGameController {
         histories.clear();
 
         round = 1;
-        checkerboard = new Checkerboard(SPACE_SIZE,ORC_NUM);
+        checkerboard = new Checkerboard(spaceSize,orcNum);
 
         addHistory();
 
-        return "game";
+        return "success";
     }
 
     //计算下一轮
@@ -80,7 +120,7 @@ public class SimpleGameController {
 
         JSONObject response = new JSONObject();
         if("CUR".equals(dataKind)){
-            response.put("spaceSize",SPACE_SIZE);
+            response.put("spaceSize",spaceSize);
             response.put("orcNum",checkerboard.getCurOrcNum());
             response.put("isGameOver",checkerboard.isGameover());
             response.put("round",round);
@@ -95,7 +135,7 @@ public class SimpleGameController {
             }
             Checkerboard hisCheckboard = histories.get(hisRound);
 
-            response.put("spaceSize",SPACE_SIZE);
+            response.put("spaceSize",spaceSize);
             response.put("orcNum",hisCheckboard.getCurOrcNum());
             response.put("isGameOver",hisCheckboard.isGameover());
             response.put("round",hisRound);
