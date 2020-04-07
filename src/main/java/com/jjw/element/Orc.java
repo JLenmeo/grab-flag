@@ -105,22 +105,22 @@ public class Orc implements Comparable<Orc> {
 
         //计算各边界距离
         List<Integer> distances = new ArrayList<>();
-        if(!ignoredBorder.contains(Direction.N)){
+        if(ignoredBorder == null || !ignoredBorder.contains(Direction.N)){
             northDistance = curPosition.getX();
             distances.add(northDistance);
         }
 
-        if(!ignoredBorder.contains(Direction.S)){
+        if(ignoredBorder == null || !ignoredBorder.contains(Direction.S)){
             southDistance = spaceSize - curPosition.getX();
             distances.add(southDistance);
         }
 
-        if(!ignoredBorder.contains(Direction.W)){
+        if(ignoredBorder == null || !ignoredBorder.contains(Direction.W)){
             westDistance = curPosition.getY();
             distances.add(westDistance);
         }
 
-        if(!ignoredBorder.contains(Direction.E)){
+        if(ignoredBorder == null || !ignoredBorder.contains(Direction.E)){
             eastDistance = spaceSize - curPosition.getY();
             distances.add(eastDistance);
         }
@@ -300,7 +300,11 @@ public class Orc implements Comparable<Orc> {
     //结算一回合的变动
     public void settle(int spaceSize){
 
-        value = value + changeValue;
+        if(isHaveFlag()){
+            value = 0.1f;
+        }else{
+            value = value + changeValue;
+        }
         curPosition.move(moveDir,moveOff);
 
         if(!haveFlag && curPosition.isOutside(spaceSize)){
@@ -447,12 +451,6 @@ public class Orc implements Comparable<Orc> {
         orcVo.setHaveFlag(haveFlag);
         orcVo.setX(curPosition.getX());
         orcVo.setY(curPosition.getY());
-
-        if(haveFlag && curPosition.isOutside(spaceSize)){
-            orcVo.setTransform(false);
-        }else{
-            orcVo.setTransform(true);
-        }
 
         return orcVo;
 

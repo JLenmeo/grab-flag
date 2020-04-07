@@ -19,8 +19,6 @@ public class OrcVo {
 
     private int y;
 
-    private boolean transform;
-
     public String getNum() {
         return num;
     }
@@ -61,11 +59,4 @@ public class OrcVo {
         this.y = y;
     }
 
-    public boolean isTransform() {
-        return transform;
-    }
-
-    public void setTransform(boolean transform) {
-        this.transform = transform;
-    }
 }

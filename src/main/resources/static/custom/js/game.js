@@ -139,12 +139,21 @@ layui.use(["element","layer"], function(){
                 for(var i = 0;i < orcVos.length;i++){
                     var orcVo = orcVos[i];
 
-                    var x;
-                    var y;
-                    if(orcVo.transform){
-                        x = orcVo.x + 1;
-                        y = orcVo.y + 1;
+                    var x = orcVo.x + 1;
+                    var y = orcVo.y + 1;
+
+                    if(x < 0){
+                        x = 0;
+                    }else if(x > (mapLength - 1)){
+                        x = mapLength - 1;
                     }
+
+                    if(y < 0){
+                        y = 0;
+                    }else if(y > (mapLength - 1)){
+                        y = mapLength - 1;
+                    }
+
                     var unit = map[x][y];
                     unit.num = orcVo.num;
                     unit.value = orcVo.value;

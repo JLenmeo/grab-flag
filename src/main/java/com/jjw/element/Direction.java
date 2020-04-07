@@ -113,6 +113,15 @@ public enum  Direction {
                     break;
                 }
             }
+
+            if(!caculated){
+                //如果在大于2个方向的基础上，还是没有计算结果，就强制计算
+                Direction dirA = dirs.remove(0);
+                Direction dirB = dirs.remove(0);
+
+                Direction resultDir = decideDir(dirA.getX() + dirB.getX(),dirA.getY() + dirB.getY());
+                dirs.add(resultDir);
+            }
         }
 
         return dirs;
